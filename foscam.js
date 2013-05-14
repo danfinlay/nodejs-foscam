@@ -44,6 +44,12 @@ app.settings = {
 	pass:	''
 }
 
+//Enable streaming of video to multiple clients.
+app.videoStream = function(){
+	var MjpegProxy = require('mjpeg-proxy')
+	return new MjpegProxy.MjpegProxy('http://'+app.settings.host+':'+app.settings.port+'?user='+app.settings.user+'&password='+app.settings.pass)
+}
+
 // overrides
 app.setup = function( props, cb ) {
 	for( var key in props ) {
